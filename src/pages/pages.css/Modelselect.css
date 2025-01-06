@@ -1,0 +1,92 @@
+:root {
+    --button-height: 70px;
+    --button-gap: 16px;
+    --container-padding: 20px;
+}
+
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Изменено с space-between на center */
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+    padding: var(--container-padding);
+    box-sizing: border-box;
+    position: relative; /* Добавлено для абсолютного позиционирования subscription-btn */
+}
+
+/* Контейнер для кнопок моделей */
+.models-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--button-gap);
+    width: min(100%, 400px);
+    animation: fadeIn 0.3s ease-in-out;
+    margin-bottom: 100px; /* Добавляем отступ снизу для пространства под кнопкой подписки */
+}
+
+/* Общие стили для всех кнопок */
+.model-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--button-height);
+    width: 100%;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: rgba(17, 24, 39, 0.3);
+    transition: background-color 0.2s ease;
+}
+
+.model-button:hover {
+    background-color: rgba(17, 24, 39, 0.5);
+}
+
+/* Стили для кнопки подписки */
+.subscription-btn {
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: var(--container-padding); /* Отступ от низа */
+    width: min(100%, 400px); /* Та же ширина, что и у других кнопок */
+    animation: fadeIn 0.3s ease-in-out 0.3s backwards;
+}
+
+/* Цвета текста для разных кнопок */
+.gpt-4-text { color: var(--color-primary); }
+.sonnet-text { color: #646cff; }
+.midjourney-text { color: #4ade80; }
+.gemini-text { color: #60a5fa; }
+.subscription-text { color: rgb(188,19,254); }
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .centered-container {
+        padding: calc(var(--container-padding) / 2);
+    }
+
+    .models-container {
+        margin-bottom: 80px; /* Уменьшаем отступ на мобильных */
+    }
+
+    .subscription-btn {
+        bottom: calc(var(--container-padding) / 2);
+    }
+}
+
+@media (max-width: 480px) {
+    .models-container {
+        margin-bottom: 60px; /* Ещё меньше отступ на маленьких экранах */
+    }
+}

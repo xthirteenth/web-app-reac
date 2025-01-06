@@ -1,0 +1,262 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Основной контейнер */
+.chat-container {
+    --chat-border-color: #ccc;
+    --chat-shadow: rgba(0, 0, 0, 0.1);
+    --chat-padding-mobile: 8px;
+    --chat-padding-desktop: 20px;
+    
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    background-color: var(--color-background);
+    border: 1px solid var(--chat-border-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--chat-shadow);
+    box-sizing: border-box;
+    
+    /* Уменьшаем padding на мобильных */
+    padding: var(--chat-padding-mobile);
+    margin: 0;
+}
+
+/* Область сообщений */
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid var(--chat-border-color);
+    
+    /* Стили скроллбара */
+    scrollbar-width: thin;
+    scrollbar-color: var(--chat-border-color) transparent;
+}
+
+/* Стили скроллбара для WebKit (Chrome, Safari) */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: var(--chat-border-color);
+    border-radius: 3px;
+}
+
+.chat-box div {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: var(--color-text);
+    word-wrap: break-word; /* Перенос длинных слов */
+    max-width: 100%;
+}
+
+/* Форма отправки сообщений */
+.chat-form {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid var(--chat-border-color);
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.chat-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    font-size: clamp(14px, 2vw, 16px);
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.chat-form input::placeholder {
+    color: var(--color-text);
+    opacity: 0.7;
+}
+
+.chat-form button {
+    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 25px);
+    font-size: clamp(14px, 2vw, 16px);
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #111827;
+    color: var(--color-primary);
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.chat-form button:hover {
+    background-color: #15223d;
+}
+
+/* Типы сообщений */
+.user, .gpt {
+    padding: clamp(8px, 2vw, 15px);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    max-width: 85%; /* Ограничение ширины сообщений */
+    animation: messageFadeIn 0.3s ease-in-out;
+}
+
+.user {
+    margin-left: auto;
+    background-color: rgba(30, 41, 59, 0.3);
+}
+.user:nth-child(n), .gpt:nth-child(n) {
+    animation-delay: calc(0.1s * var(--i));
+}
+
+.gpt {
+    margin-right: auto;
+    background-color: rgba(255, 164, 32, 0.1);
+}
+
+.latex {
+    color: red;
+}
+
+/* Стили для блоков кода */
+.code-block {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+    font-size: clamp(12px, 1.5vw, 14px);
+    white-space: pre-wrap; /* Сохраняет форматирование кода */
+}
+
+/* Медиа-запросы */
+@media (min-width: 768px) {
+    .chat-container {
+        padding: var(--chat-padding-desktop);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .user, .gpt {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        width: 100%;
+        margin: 0;
+        padding: 4px;
+        border-radius: 0; /* Убираем скругление на мобильных */
+    }
+    
+    .chat-form {
+        padding: 8px 4px;
+        gap: 6px;
+        width: calc(100% - 8px);
+        margin: 0 auto;
+    }
+    
+    .chat-form input {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+    
+    .chat-form button {
+        flex: 0 0 auto;
+        padding: 10px 15px;
+    }
+    
+    .user, .gpt {
+        max-width: 90%; /* Увеличиваем максимальную ширину сообщений */
+        margin-bottom: 8px;
+    }
+    
+    .code-block {
+        margin: 0.5rem -8px;
+        border-radius: 0;
+    }
+    
+    .chat-form input {
+        min-width: 0;
+        width: 100%;
+        &::placeholder {
+            color: var(--color-text);
+            opacity: 0.7;
+        }
+    }
+}
+
+/* Добавляем специфичные стили для очень узких экранов */
+@media (max-width: 390px) {
+    .chat-container {
+        padding: 4px;
+    }
+    
+    .chat-box {
+        padding: 8px;
+    }
+    
+    .user, .gpt {
+        max-width: 95%; /* Ещё больше увеличиваем ширину сообщений */
+        padding: 8px;
+    }
+    
+    .chat-form input {
+        &::placeholder {
+            color: var(--color-text);
+            opacity: 0.7;
+        }
+    }
+    
+    .chat-form {
+        width: calc(100% - 4px);
+        padding: 4px 2px;
+    }
+}
+
+/* Поддержка тёмного режима системы */
+@media (prefers-color-scheme: dark) {
+    .code-block {
+        background-color: #2d2d2d;
+    }
+}
+
+@keyframes messageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Последовательное появление сообщений */
+.user:nth-child(n), .gpt:nth-child(n) {
+    animation-delay: calc(0.1s * var(--i));
+}
+
+.user:last-child,
+.gpt:last-child {
+    animation: messageFadeIn 0.3s ease-in-out;
+}

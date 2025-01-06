@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Цветовые переменные */
+  --color-primary: rgba(255, 164, 32);
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-background: #1c1c1c;
+  --color-nav-background: rgba(17, 24, 39, 0.5);
+
+  /* Базовые настройки шрифта */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-background);
+
+  /* Оптимизация рендеринга текста */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Стили для ссылок */
+a {
+  font-weight: 500;
+  color: var(--color-link);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Основной layout */
+.main {
+  min-height: 100vh;
+}
+
+.content-container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Навигация */
+.navigation-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-nav-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 2.5rem;
+}
+
+/* Кнопки */
+.button-all {
+  border-color: transparent;
+  padding: 16px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 200ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-all-text-color {
+  color: var(--color-primary);
+}

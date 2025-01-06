@@ -1,0 +1,189 @@
+/* Переменные для повторяющихся значений */
+:root {
+    --block-gap: clamp(8px, 2vw, 16px);
+    --container-padding: clamp(15px, 4vw, 30px);
+    --block-width: min(100%, 600px); /* Максимальная ширина блоков */
+}
+
+/* Основной контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+    padding: var(--container-padding);
+    box-sizing: border-box;
+    gap: var(--block-gap);
+}
+
+/* Общие стили для блоков */
+.top-block,
+.middle-block,
+.bottom-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--block-width);
+    gap: var(--block-gap);
+    padding: clamp(10px, 2vw, 20px);
+    border-radius: 8px;
+    background-color: rgba(17, 24, 39, 0.3);
+<<<<<<< HEAD
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .container {
+        justify-content: flex-start;
+        gap: calc(var(--block-gap) * 2);
+    }
+
+    .top-block,
+    .middle-block,
+    .bottom-block {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: calc(var(--container-padding) / 2);
+    }
+
+    .top-block,
+    .middle-block,
+    .bottom-block {
+        padding: calc(var(--block-gap) / 2);
+        gap: calc(var(--block-gap) / 2);
+    }
+}
+
+/* Анимации для блоков при появлении */
+.top-block,
+.middle-block,
+.bottom-block {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для строк с информацией */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 16px;
+    gap: 20px;
+}
+
+.info-label {
+    color: var(--color-text);
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.info-value {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Адаптивность для инфо-строк */
+@media (max-width: 480px) {
+    .info-row {
+        padding: 6px 12px;
+        gap: 12px;
+    }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .container {
+        justify-content: flex-start;
+        gap: calc(var(--block-gap) * 2);
+    }
+
+    .top-block,
+    .middle-block,
+    .bottom-block {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: calc(var(--container-padding) / 2);
+    }
+
+    .top-block,
+    .middle-block,
+    .bottom-block {
+        padding: calc(var(--block-gap) / 2);
+        gap: calc(var(--block-gap) / 2);
+    }
+}
+
+/* Анимации для блоков при появлении */
+.top-block,
+.middle-block,
+.bottom-block {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 16px;
+    gap: 20px;
+}
+
+.info-label {
+    color: var(--color-text);
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.info-value {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Адаптивность для инфо-строк */
+@media (max-width: 480px) {
+    .info-row {
+        padding: 6px 12px;
+        gap: 12px;
+    }
+}
+
+.menu {
+    animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.2s; }
+.menu-item:nth-child(3) { animation-delay: 0.3s; }
