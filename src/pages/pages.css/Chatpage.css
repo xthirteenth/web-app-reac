@@ -16,7 +16,7 @@ body {
     --chat-padding-desktop: 20px;
     
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,9 +27,8 @@ body {
     box-shadow: 0 0 10px var(--chat-shadow);
     box-sizing: border-box;
     
-    /* Уменьшаем padding на мобильных */
     padding: var(--chat-padding-mobile);
-    margin: 0;
+    margin: 15px 0 0 0;
 }
 
 /* Область сообщений */
@@ -162,10 +161,10 @@ body {
 
 @media (max-width: 480px) {
     .chat-container {
-        width: 100%;
-        margin: 0;
+        height: calc(100vh - 150px);
+        border-radius: 0;
         padding: 4px;
-        border-radius: 0; /* Убираем скругление на мобильных */
+        margin: 10px 0 0 0;
     }
     
     .chat-form {
@@ -208,7 +207,9 @@ body {
 /* Добавляем специфичные стили для очень узких экранов */
 @media (max-width: 390px) {
     .chat-container {
+        height: calc(100vh - 160px);
         padding: 4px;
+        margin: 8px 0 0 0;
     }
     
     .chat-box {
@@ -259,4 +260,42 @@ body {
 .user:last-child,
 .gpt:last-child {
     animation: messageFadeIn 0.3s ease-in-out;
+}
+
+/* Обновляем стили кнопки истории */
+.history-button {
+    display: block;
+    margin: 10px auto;
+    padding: 6px 12px;
+    background-color: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    min-width: 120px;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.history-button:hover {
+    background-color: #2d3748;
+}
+
+@media (max-width: 480px) {
+    .history-button {
+        font-size: 12px;
+        padding: 5px 10px;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 390px) {
+    .chat-container {
+        height: calc(100vh - 110px);
+    }
+    
+    .history-button {
+        margin: 8px auto 50px;
+    }
 }

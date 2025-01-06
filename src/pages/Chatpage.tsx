@@ -8,6 +8,7 @@ import './pages.css/Chatpage.css'
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
   const [input, setInput] = useState("");
+  const [chatHistory, setChatHistory] = useState([]);
 
   // Функция для обработки текста и отображения кода
   const parseText = (text: string) => {
@@ -81,6 +82,15 @@ const Chat: React.FC = () => {
         />
         <button type="submit">Отправить</button>
       </form>
+      
+      <button 
+        className="history-button"
+        onClick={() => {
+          console.log('История чата будет здесь');
+        }}
+      >
+        История
+      </button>
     </div>
   );
 };
