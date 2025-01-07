@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "katex/dist/katex.min.css";
 import katex from "katex";
-
-import './pages.css/Chatpage.css'
+import './pages.css/Chatpage.css';
 
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
@@ -82,7 +81,6 @@ const Chat: React.FC = () => {
         />
         <button type="submit">Отправить</button>
       </form>
-      
       <button 
         className="history-button"
         onClick={() => {
@@ -95,4 +93,4 @@ const Chat: React.FC = () => {
   );
 };
 
-export {Chat}
+export { Chat };
